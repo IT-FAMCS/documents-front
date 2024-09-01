@@ -1,0 +1,44 @@
+/* #2caa88 - цвет*/
+
+.header-component {
+  margin: 0;
+  background-color: var(--header-backgroud-color);
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  z-index: 1;
+}
+
+.logo {
+  margin-top: 2px;
+  width: 80px;
+  height: 55px;
+}
+
+.header-text {
+  margin: 0 0 0 150px;
+  font-size: 30px;
+  color: var(--header-text-color);
+}
+
+#Home-Back {
+  border-color: var(--header-text-color);
+  color: var(--header-text-color);
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#topic {
+  border-color: var(--header-text-color);
+  color: var(--header-text-color);
+}
+
+#account {
+  border-color: var(--header-text-color);
+  color: var(--header-text-color);
+}
+
+.button-section {
+  display: flex;
+  justify-content: space-between;
+}
