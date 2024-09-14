@@ -1,5 +1,5 @@
 import React, { useEffect, createContext, ReactNode, useState } from "react";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { useLocalStrorage } from "../hooks/useLocalStorage";
 
 export const ThemeContext = createContext<{
   theme: string;
@@ -10,7 +10,7 @@ export const ThemeContext = createContext<{
 });
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useLocalStorage("theme", "light");
+  const [theme, setTheme] = useLocalStrorage("theme", "light");
 
   useEffect(() => {
     if (theme === "dark") {
