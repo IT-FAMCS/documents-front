@@ -10,3 +10,9 @@
   color: var(--footer-text-color);
   margin-right: 40px;
 }
+
+@media (max-width: 600px) {
+  #creators {
+    display: none;
+  }
+}
