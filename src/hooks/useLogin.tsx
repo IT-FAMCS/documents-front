@@ -2,12 +2,10 @@ import { useState, useEffect } from "react";
 import { LOGIN_URL, CHECK_TOKEN_URL } from "../constants/apiUrls";
 import { fetchPost } from "../api/FetchPost";
 import { useNavigate } from "react-router-dom";
-import { useLocalStorage } from "./useLocalStorage";
 
 export const useAuth = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
-  const [token, setToken] = useLocalStorage("token", "");
 
   useEffect(() => {
     const verifyToken = async () => {
@@ -24,13 +22,9 @@ export const useAuth = () => {
         email,
         password,
       });
-
-      if (response && response.token) {
-        setToken(response.token);
+      if (response.token) {
+        localStorage.setItem("token", response.token);
         setIsAuthenticated(true);
-        console.log("Token saved successfully:", response.token);
-      } else {
-        console.error("Token not found in response:", response);
       }
     } catch (error) {
       console.error("Login failed:", error);
@@ -38,12 +32,13 @@ export const useAuth = () => {
   };
 
   const logout = () => {
-    setToken("");
+    localStorage.removeItem("token");
     setIsAuthenticated(false);
     navigate("/login");
   };
 
   const checkToken = async () => {
+    const token = localStorage.getItem("token");
     if (!token) {
       return false;
     }
